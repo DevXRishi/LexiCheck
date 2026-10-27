@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LexiCheck — Lexical Analyzer &amp; Syntax Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">L<span>C</span></div>
+      <div><p class="eyebrow">COMPILER DESIGN · FRONT END</p><h1>LexiCheck</h1>
+        <p class="subtitle">Lexical Analyzer &amp; Syntax Checker</p>
+        <p class="intro">Explore how a compiler front end reads source code, recognizes tokens, and checks a small grammar.</p>
+      </div>
+      <span class="language-tag">EDUCATIONAL C-LIKE LANGUAGE</span>
+    </header>
+
+    <section class="panel editor-panel" aria-labelledby="editor-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / SOURCE</p><h2 id="editor-title">Your program</h2></div><span class="file-tag">source.lc</span></div>
+      <label class="sr-only" for="source-code">Enter source code</label>
+      <textarea id="source-code" spellcheck="false" placeholder="int age = 20;\nprint(age);" aria-describedby="language-note"></textarea>
+      <p id="language-note" class="hint">A small C-like language. Your code is analyzed only; it is never executed.</p>
+      <div class="actions">
+        <button id="analyze-button" class="button primary" type="button"><span class="play-icon">▶</span> Analyze Code</button>
+        <div class="secondary-actions"><button id="valid-example" class="button secondary" type="button">Load Valid Example</button><button id="error-example" class="button secondary" type="button">Load Error Example</button><button id="clear-button" class="button quiet" type="button">Clear</button></div>
+      </div>
+      <p id="request-message" class="request-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="results" class="results" aria-live="polite" hidden>
+      <div class="section-heading results-heading"><div><p class="eyebrow">02 / ANALYSIS</p><h2>Results</h2></div><span id="result-badge" class="result-badge"></span></div>
+      <div id="summary-grid" class="summary-grid"></div>
+      <section class="panel result-panel"><div class="section-heading"><div><p class="eyebrow">LEXICAL ANALYSIS</p><h3>Tokens</h3></div><span id="token-count" class="count-tag"></span></div>
+        <div class="table-wrap"><table><thead><tr><th>#</th><th>Value</th><th>Type</th><th>Line</th><th>Column</th></tr></thead><tbody id="token-rows"></tbody></table></div>
+        <p id="no-tokens" class="empty-state" hidden>No tokens found in this input.</p>
+      </section>
+      <div class="error-grid">
+        <section class="panel result-panel error-panel"><div class="section-heading"><div><p class="eyebrow">SCANNER FEEDBACK</p><h3>Lexical errors</h3></div><span id="lexical-count" class="count-tag">0</span></div><ul id="lexical-errors" class="error-list"></ul></section>
+        <section class="panel result-panel error-panel"><div class="section-heading"><div><p class="eyebrow">GRAMMAR FEEDBACK</p><h3>Syntax errors</h3></div><span id="syntax-count" class="count-tag">0</span></div><ul id="syntax-errors" class="error-list"></ul></section>
+      </div>
+      <p id="success-message" class="success-message" hidden></p>
+    </section>
+    <footer><span>LexiCheck</span><span>Learning the compiler front end, one token at a time.</span></footer>
+  </main>
+</body>
+</html>
